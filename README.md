@@ -20,15 +20,11 @@
 
 Для $N$ частиц, если $n$ частиц находятся в одной части системы, число соответствующих микросостояний:
 
-$$
-\Omega(n)=\binom{N}{n}=\frac{N!}{n!(N-n)!}.
-$$
+$\displaystyle \Omega(n)=\binom{N}{n}=\frac{N!}{n!(N-n)!}.$
 
 При $N\to\infty$ биномиальное распределение переходит в нормальное. Абсолютная дисперсия растёт как $\sqrt{N}$, но относительная ошибка падает:
 
-$$
-\frac{\sigma_n}{N}\propto\frac{1}{\sqrt{N}}.
-$$
+$\displaystyle \frac{\sigma_n}{N}\propto\frac{1}{\sqrt{N}}.$
 
 Поэтому при макроскопическом числе частиц свойства системы стабильны.
 
@@ -38,9 +34,7 @@ $$
 
 Энтропия Больцмана:
 
-$$
-S=k_B\ln\Omega,
-$$
+$\displaystyle S=k_B\ln\Omega,$
 
 где:
 
@@ -58,23 +52,17 @@ $$
 
 Связь информации и термодинамики выражается через минимальный масштаб энтропии одного бита:
 
-$$
-\Delta S = k_B\ln 2.
-$$
+$\displaystyle \Delta S = k_B\ln 2.$
 
 ### Temperature (температура)
 
 Температура определяется через изменение энтропии при изменении внутренней энергии:
 
-$$
-\frac{1}{T}=\left(\frac{\partial S}{\partial U}\right)_{V,N}.
-$$
+$\displaystyle \frac{1}{T}=\left(\frac{\partial S}{\partial U}\right)_{V,N}.$
 
 С учётом $S=k_B\ln\Omega$:
 
-$$
-\frac{1}{k_BT}=\frac{\partial\ln\Omega}{\partial U}.
-$$
+$\displaystyle \frac{1}{k_BT}=\frac{\partial\ln\Omega}{\partial U}.$
 
 Правая часть показывает, **как быстро растёт логарифм числа микросостояний при добавлении энергии**.
 
@@ -94,15 +82,11 @@ $$
 
 Теплоёмкость — скорость изменения внутренней энергии при изменении температуры:
 
-$$
-C_V=\left(\frac{\partial U}{\partial T}\right)_V.
-$$
+$\displaystyle C_V=\left(\frac{\partial U}{\partial T}\right)_V.$
 
 Из термодинамических соотношений:
 
-$$
-C_V=T\left(\frac{\partial S}{\partial T}\right)_V.
-$$
+$\displaystyle C_V=T\left(\frac{\partial S}{\partial T}\right)_V.$
 
 Следовательно, теплоёмкость связана с тем, сколько микроскопических состояний становится доступно при поглощении энергии при заданной температуре.
 
@@ -110,15 +94,11 @@ $$
 
 Если микросостояния имеют неодинаковые вероятности:
 
-$$
-S=-k_B\sum_i p_i\ln p_i.
-$$
+$\displaystyle S=-k_B\sum_i p_i\ln p_i.$
 
 Информационная энтропия Шеннона:
 
-$$
-H(X)=-\sum_i p_i\log_2 p_i.
-$$
+$\displaystyle H(X)=-\sum_i p_i\log_2 p_i.$
 
 Энтропия отражает, **сколько информации не хватает для точного указания микросостояния**.
 
@@ -128,23 +108,15 @@ $$
 
 Из них получаются интенсивные величины:
 
-$$
-T=\left(\frac{\partial U}{\partial S}\right)_{V,N},
-$$
+$\displaystyle T=\left(\frac{\partial U}{\partial S}\right)_{V,N},$
 
-$$
-P=-\left(\frac{\partial U}{\partial V}\right)_{S,N},
-$$
+$\displaystyle P=-\left(\frac{\partial U}{\partial V}\right)_{S,N},$
 
-$$
-\mu=\left(\frac{\partial U}{\partial N}\right)_{S,V}.
-$$
+$\displaystyle \mu=\left(\frac{\partial U}{\partial N}\right)_{S,V}.$
 
 Фундаментальное соотношение:
 
-$$
-dU=T\,dS-P\,dV+\mu\,dN.
-$$
+$\displaystyle dU=T\,dS-P\,dV+\mu\,dN.$
 
 ---
 
@@ -161,43 +133,31 @@ $$
 
 Для системы, которая может обмениваться энергией с намного большей системой — **thermostat / reservoir (термостат / резервуар)** — общая энергия сохраняется:
 
-$$
-E_{tot}=E_i+E_R.
-$$
+$\displaystyle E_{tot}=E_i+E_R.$
 
 Если система имеет энергию $E_i$, резервуару остаётся:
 
-$$
-E_R=E_{tot}-E_i.
-$$
+$\displaystyle E_R=E_{tot}-E_i.$
 
 Вероятность состояния системы пропорциональна числу микросостояний резервуара:
 
-$$
-p_i\propto\Omega_R(E_{tot}-E_i).
-$$
+$\displaystyle p_i\propto\Omega_R(E_{tot}-E_i).$
 
 ### Taylor series (ряд Тейлора)
 
 Ряд Тейлора используется как способ заменить сложную гладкую функцию около выбранной точки суммой простых поправок:
 
-$$
-f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n.
-$$
+$\displaystyle f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n.$
 
 При большом резервуаре энтропию можно разложить в окрестности $E_{tot}$ и оставить первую производную:
 
-$$
-S_R(E_{tot}-E_i)\approx S_R(E_{tot})-\frac{E_i}{T}.
-$$
+$\displaystyle S_R(E_{tot}-E_i)\approx S_R(E_{tot})-\frac{E_i}{T}.$
 
 ### Boltzmann distribution (распределение Больцмана)
 
 Из связи $S=k_B\ln\Omega$ и разложения энтропии получается:
 
-$$
-p_i\propto\exp\left(-\frac{E_i}{k_BT}\right).
-$$
+$\displaystyle p_i\propto\exp\left(-\frac{E_i}{k_BT}\right).$
 
 Распределение порождается конкуренцией двух факторов:
 
@@ -210,21 +170,15 @@ $$
 
 Для макросостояния учитываются одновременно энергия и энтропия:
 
-$$
-P\propto e^{S/k_B}e^{-E/(k_BT)}.
-$$
+$\displaystyle P\propto e^{S/k_B}e^{-E/(k_BT)}.$
 
 Эквивалентно:
 
-$$
-P\propto\exp\left(-\frac{E-TS}{k_BT}\right).
-$$
+$\displaystyle P\propto\exp\left(-\frac{E-TS}{k_BT}\right).$
 
 Возникает **Helmholtz free energy (свободная энергия Гельмгольца)**:
 
-$$
-F=E-TS.
-$$
+$\displaystyle F=E-TS.$
 
 Она показывает противоборство энергетической выгодности и статистической доступности.
 
@@ -234,9 +188,7 @@ $$
 
 В презентации химический потенциал записан как:
 
-$$
-\mu=\left(\frac{\partial G}{\partial N}\right)_{T,P},
-$$
+$\displaystyle \mu=\left(\frac{\partial G}{\partial N}\right)_{T,P},$
 
 где $G$ — Gibbs free energy (свободная энергия Гиббса), $N$ — число частиц.
 
@@ -355,9 +307,7 @@ Boltzmann distribution
 
 **Основной принцип архитектуры:**
 
-$$
-\boxed{1\text{ конформер}\;\longleftrightarrow\;1\text{ латентная частица}}.
-$$
+$\displaystyle \boxed{1\text{ конформер}\;\longleftrightarrow\;1\text{ латентная частица}}.$
 
 ---
 
@@ -393,17 +343,13 @@ $$
 
 В приближении дискретных конформационных состояний:
 
-$$
-p_i=\frac{g_i e^{-E_i/(k_BT_{\mathrm{phys}})}}{\sum_j g_j e^{-E_j/(k_BT_{\mathrm{phys}})}}.
-$$
+$\displaystyle p_i=\frac{g_i e^{-E_i/(k_BT_{\mathrm{phys}})}}{\sum_j g_j e^{-E_j/(k_BT_{\mathrm{phys}})}}.$
 
 $E_i$ — оценка энергии, $g_i$ — учтённая кратность, $T_{\mathrm{phys}}$ — **температура**, $k_B$ — постоянная Больцмана. Строгие термодинамические вероятности связаны со свободной энергией; формула по $E_i$ — приближение [2, с. 3–4, формула (1)].
 
 Ансамблевое среднее свойства:
 
-$$
-\langle A\rangle\approx\sum_i p_iA_i.
-$$
+$\displaystyle \langle A\rangle\approx\sum_i p_iA_i.$
 
 Применяется, **если** усреднение физически соответствует выбранной наблюдаемой величине и известны значения $A_i$ (М1, PDF с. 3).
 
@@ -439,27 +385,17 @@ $$
 
 ### E01. Velocity alignment (согласование скоростей)
 
-$$
-\dot V=-L_AV,\qquad L_A=\frac{D_A-A}{N},
-$$
+$\displaystyle \dot V=-L_AV,\qquad L_A=\frac{D_A-A}{N},$
 
-$$
-\|V(t)-\overline V(t)\|_F\le e^{-\lambda_2(L_A)t}\|V(0)-\overline V(0)\|_F.
-$$
+$\displaystyle \|V(t)-\overline V(t)\|_F\le e^{-\lambda_2(L_A)t}\|V(0)-\overline V(0)\|_F.$
 
 $A$ — симметричная матрица связей; $D_A$ — диагональная матрица сумм весов; $N$ — число игрушечных частиц; $\lambda_2$ — второе собственное значение лапласиана. Оценка верна для **фиксированного связного** графа [6, печ. с. 46–47 / PDF с. 67–68, теорема 3.4].
 
 ### E02. Pair potential + alignment (силы и согласование)
 
-$$
-\dot q_i=v_i,\qquad
-\dot v_i=-\nabla_{q_i}P(q)-\kappa(L_AV)_i.
-$$
+$\displaystyle \dot q_i=v_i,\qquad \dot v_i=-\nabla_{q_i}P(q)-\kappa(L_AV)_i.$
 
-$$
-H=\frac12\sum_i\|v_i\|^2+P(q),\qquad
-\dot H=-\kappa\,\mathrm{tr}(V^\top L_AV)\le0.
-$$
+$\displaystyle H=\frac12\sum_i\|v_i\|^2+P(q),\qquad \dot H=-\kappa\,\mathrm{tr}(V^\top L_AV)\le0.$
 
 Это **модельное** энергетическое тождество для симметричных неотрицательных связей и согласованной силы $-\nabla P$, а не закон для реальной молекулы [5, PDF с. 4–7; 8, PDF с. 3–5; М4].
 
