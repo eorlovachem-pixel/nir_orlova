@@ -28,18 +28,13 @@
 
 В приближении дискретных конформеров при принятой температуре $T_{\mathrm{phys}}$ можно использовать:
 
-$$
-\beta=\frac{1}{k_BT_{\mathrm{phys}}},\qquad
-p_i^{(\mathrm{obs})}=\frac{g_i\exp(-\beta E_i)}{\sum_{j\in\mathcal O}g_j\exp(-\beta E_j)}.
-$$
+$\displaystyle \beta=\frac{1}{k_BT_{\mathrm{phys}}},\qquad p_i^{(\mathrm{obs})}=\frac{g_i\exp(-\beta E_i)}{\sum_{j\in\mathcal O}g_j\exp(-\beta E_j)}.$
 
 Здесь $E_i$ — оценка энергии конформера, $g_i$ — учтённая кратность/вырождение, $\mathcal O$ — **наблюдаемая** выборка, $k_B$ — постоянная Больцмана. Равенство является нормировкой *в пределах модели и доступных состояний*, а не гарантией совпадения с полной термодинамической вероятностью [2, с. 3–4, формула (1)].
 
 Если имеются **свободные энергии конформерных областей** $G_i$, корректная статистическая модель может иметь вид
 
-$$
-p_i\propto\exp(-\beta G_i).
-$$
+$\displaystyle p_i\propto\exp(-\beta G_i).$
 
 Нельзя одновременно добавлять энтропийное вырождение $g_i$ и включать его снова в $G_i$ без явной проверки соглашений: это риск **двойного учёта** [2, с. 3–4, обсуждение формулы (1)].
 
@@ -47,9 +42,7 @@ $$
 
 Для свойства, допускающего усреднение по конформерам:
 
-$$
-\langle A\rangle_{\mathrm{obs}}=\sum_{i\in\mathcal O}p_i^{(\mathrm{obs})}A_i.
-$$
+$\displaystyle \langle A\rangle_{\mathrm{obs}}=\sum_{i\in\mathcal O}p_i^{(\mathrm{obs})}A_i.$
 
 $A_i$ — значение величины для конформера $i$. Это обоснованный baseline лишь тогда, когда значение $A_i$ известно или вычислимо, а усреднение соответствует постановке свойства. **Не каждое молекулярное свойство сводится к такой линейной сумме** [2, с. 1–4; М1, PDF с. 3].
 
@@ -57,10 +50,7 @@ $A_i$ — значение величины для конформера $i$. Э�
 
 Если полное распределение имеет вероятностную массу $\alpha=\sum_{i\in\mathcal O}p_i^{\mathrm{full}}<1$, то перенормировка по $\mathcal O$ даёт условное среднее, а не исходное полное среднее:
 
-$$
-\mathbb E[A\mid i\in\mathcal O]\ne\mathbb E[A]
-\quad\text{в общем случае}.
-$$
+$\displaystyle \mathbb E[A\mid i\in\mathcal O]\ne\mathbb E[A] \quad\text{в общем случае}.$
 
 Этот вывод следует из определения условной вероятности; он **не обещает**, что любая обучаемая модель восстановит недостающие состояния. [НУЖНО УТОЧНИТЬ: как формируется неполнота в выбранном химическом наборе?]
 
@@ -70,32 +60,19 @@ $$
 
 Для молекулы $m$:
 
-$$
-G_m=(V_m,E_m^{\mathrm{chem}}),\qquad
-\mathcal C_m=\{c_{m1},\ldots,c_{mN_m}\},\quad
-c_{mi}=(R_{mi},E_{mi}).
-$$
+$\displaystyle G_m=(V_m,E_m^{\mathrm{chem}}),\qquad \mathcal C_m=\{c_{m1},\ldots,c_{mN_m}\},\quad c_{mi}=(R_{mi},E_{mi}).$
 
 $R_{mi}\in\mathbb R^{A_m\times3}$ — координаты атомов, $E_{mi}$ — оценка конформационной энергии, $N_m$ — число **наблюдаемых** конформеров. Сначала:
 
-$$
-h_{mi}=\phi_\eta(G_m,R_{mi},E_{mi}),\qquad
-z_{mi}(0)=\psi_\eta(h_{mi}),\qquad
-\boxed{\#z_m=N_m}.
-$$
+$\displaystyle h_{mi}=\phi_\eta(G_m,R_{mi},E_{mi}),\qquad z_{mi}(0)=\psi_\eta(h_{mi}),\qquad \boxed{\#z_m=N_m}.$
 
 $\phi_\eta$ — общий энкодер, $\psi_\eta$ — общая инициализация, $z_i=(q_i,v_i)$ — вычислительное состояние частицы. Это **предлагаемая параметризация**, а не химический закон (М1, PDF с. 3–4).
 
 Непрерывная динамика и прогноз:
 
-$$
-\dot Z(t)=F_\theta(Z(t);\mathcal C_m),\qquad
-Z(T)=\operatorname{ODESolve}(F_\theta,Z(0),T),
-$$
+$\displaystyle \dot Z(t)=F_\theta(Z(t);\mathcal C_m),\qquad Z(T)=\mathrm{ODESolve}(F_\theta,Z(0),T),$
 
-$$
-\widehat y_m=\rho_\omega\!\left(\frac1{N_m}\sum_{i=1}^{N_m}\chi_\omega(z_{mi}(T))\right).
-$$
+$\displaystyle \widehat y_m=\rho_\omega\!\left(\frac1{N_m}\sum_{i=1}^{N_m}\chi_\omega(z_{mi}(T))\right).$
 
 Первая строка соответствует общему принципу Neural ODE [4, PDF с. 1–2, формула (2)]; вторая — одна из инвариантных архитектур агрегации, а не единственный возможный readout [3, PDF с. 2–3, §3.1].
 
@@ -105,11 +82,7 @@ $$
 
 Если $\Pi$ — матрица перестановки конформеров, то требуется:
 
-$$
-F_\theta(\Pi Z;\Pi\mathcal C)=\Pi F_\theta(Z;\mathcal C),
-\qquad
-\widehat y(\Pi\mathcal C)=\widehat y(\mathcal C).
-$$
+$\displaystyle F_\theta(\Pi Z;\Pi\mathcal C)=\Pi F_\theta(Z;\mathcal C), \qquad \widehat y(\Pi\mathcal C)=\widehat y(\mathcal C).$
 
 Первое свойство называется *эквивариантностью* внутреннего вычисления, второе — *инвариантностью* итогового предсказания [3, PDF с. 2–3].
 
@@ -119,26 +92,15 @@ $$
 
 ### Матрица связей и лапласиан
 
-$$
-A=(a_{ij}),\quad a_{ij}=a_{ji}\ge0,\quad a_{ii}=0,
-\qquad
-D_A=\operatorname{diag}\!\left(\sum_j a_{ij}\right).
-$$
+$\displaystyle A=(a_{ij}),\quad a_{ij}=a_{ji}\ge0,\quad a_{ii}=0, \qquad D_A=\mathrm{diag}\!\left(\sum_j a_{ij}\right).$
 
-$$
-\boxed{L_A=\frac{D_A-A}{N}},\qquad
-\boxed{\dot V=-\kappa L_A V}.
-$$
+$\displaystyle \boxed{L_A=\frac{D_A-A}{N}},\qquad \boxed{\dot V=-\kappa L_A V}.$
 
 В E01 $V\in\mathbb R^{N\times d}$, $d=2$, и $\kappa=1$. Нормировка $1/N$ уже встроена в $L_A$. Это фиксированная симметричная модель, для которой известен спектральный анализ [5, PDF с. 5–7; 6, печ. с. 46–47 / PDF с. 67–68].
 
 ### Линейные проекторы: среднее и отклонения
 
-$$
-P_N=\frac1N\mathbf1\mathbf1^\top,\qquad
-Q_N=I-P_N,\qquad
-P_N^2=P_N,\ Q_N^2=Q_N.
-$$
+$\displaystyle P_N=\frac1N\mathbf1\mathbf1^\top,\qquad Q_N=I-P_N,\qquad P_N^2=P_N,\ Q_N^2=Q_N.$
 
 - $P_NV$ — скорости всех частиц, заменённые общей средней скоростью.
 - $Q_NV$ — отклонения от средней скорости.
@@ -146,10 +108,7 @@ $$
 
 Для постоянного симметричного $L_A$:
 
-$$
-V(t)=e^{-\kappa L_At}V(0),\qquad
-\|Q_NV(t)\|_F\le e^{-\kappa\lambda_2(L_A)t}\|Q_NV(0)\|_F.
-$$
+$\displaystyle V(t)=e^{-\kappa L_At}V(0),\qquad \|Q_NV(t)\|_F\le e^{-\kappa\lambda_2(L_A)t}\|Q_NV(0)\|_F.$
 
 Это аналитическое решение и спектральная оценка; скорость не обязательно затухает **строго по верхней границе**, поскольку в начальном состоянии могут отсутствовать медленные собственные моды [6, печ. с. 46–47, формулы (3.7)–(3.9)].
 
@@ -174,15 +133,9 @@ $$
 
 ### Модель
 
-$$
-\boxed{\dot X=V,\qquad \dot V=-\nabla_XP(X)-\kappa L_AV},
-$$
+$\displaystyle \boxed{\dot X=V,\qquad \dot V=-\nabla_XP(X)-\kappa L_AV},$
 
-$$
-P(X)=\frac1{2N}\sum_{i,j}b_{ij}u(r_{ij}),
-\qquad r_{ij}=\|q_i-q_j\|,
-\qquad L_B=\frac{D_B-B}{N}.
-$$
+$\displaystyle P(X)=\frac1{2N}\sum_{i,j}b_{ij}u(r_{ij}), \qquad r_{ij}=\|q_i-q_j\|, \qquad L_B=\frac{D_B-B}{N}.$
 
 Здесь $X=[q_1;\ldots;q_N]\in\mathbb R^{N\times d}$, $V=[v_1;\ldots;v_N]$, $\kappa\ge0$. **Обязательное условие:** градиент вычисляется от **того же** $P$, который используется в энергетическом балансе [5, PDF с. 4–7; 7, PDF с. 5, формула (9)].
 
@@ -190,77 +143,45 @@ $$
 
 **Preferred distance** (предпочтительная дистанция; сглаженная версия):
 
-$$
-s_{ij}=\sqrt{\|q_i-q_j\|^2+\varepsilon^2},\qquad
-P_{\mathrm{pref}}=\frac{k}{2N}\sum_{i<j}(s_{ij}-r_*)^2.
-$$
+$\displaystyle s_{ij}=\sqrt{\|q_i-q_j\|^2+\varepsilon^2},\qquad P_{\mathrm{pref}}=\frac{k}{2N}\sum_{i<j}(s_{ij}-r_*)^2.$
 
-$$
-F_i^{\mathrm{pref}}=-\frac{k}{N}\sum_{j\ne i}\frac{s_{ij}-r_*}{s_{ij}}(q_i-q_j).
-$$
+$\displaystyle F_i^{\mathrm{pref}}=-\frac{k}{N}\sum_{j\ne i}\frac{s_{ij}-r_*}{s_{ij}}(q_i-q_j).$
 
 $k>0$ — жёсткость, $r_*$ — желаемое расстояние, $\varepsilon>0$ — сглаживание. Формулы **точно соответствуют предоставленному `e02_dynamics.py`**, не взяты дословно из [5]. Сглаживание делает вычисление определённым при совпадении координат (М4).
 
 **Gaussian repulsion** (гауссово отталкивание):
 
-$$
-P_{\mathrm{rep}}=\frac{k}{N}\sum_{i<j}
-\exp\left(-\frac{\|q_i-q_j\|^2}{2\sigma^2}\right),
-$$
+$\displaystyle P_{\mathrm{rep}}=\frac{k}{N}\sum_{i<j} \exp\left(-\frac{\|q_i-q_j\|^2}{2\sigma^2}\right),$
 
-$$
-F_i^{\mathrm{rep}}=\frac{k}{N\sigma^2}\sum_{j\ne i}
-\exp\left(-\frac{\|q_i-q_j\|^2}{2\sigma^2}\right)(q_i-q_j).
-$$
+$\displaystyle F_i^{\mathrm{rep}}=\frac{k}{N\sigma^2}\sum_{j\ne i} \exp\left(-\frac{\|q_i-q_j\|^2}{2\sigma^2}\right)(q_i-q_j).$
 
 $\sigma>0$ — характерная длина; это **учебный латентный потенциал**, не физическая энергия органической молекулы (М4).
 
 ### Энергетический баланс — полный вывод
 
-$$
-H(X,V)=\frac12\sum_i\|v_i\|^2+P(X).
-$$
+$\displaystyle H(X,V)=\frac12\sum_i\|v_i\|^2+P(X).$
 
 Дифференцируя по $t$ при $\dot X=V$ и $\dot V=-\nabla P-\kappa L_AV$:
 
-$$
-\begin{aligned}
-\frac{dH}{dt}
-&=\sum_i v_i^\top\dot v_i+\sum_i\nabla_{q_i}P^\top v_i\\
-&=-\kappa\,\operatorname{tr}(V^\top L_AV)\\
-&=-\frac{\kappa}{2N}\sum_{i,j}a_{ij}\|v_i-v_j\|^2\le0.
-\end{aligned}
-$$
+$\displaystyle \begin{aligned} \frac{dH}{dt} &=\sum_i v_i^\top\dot v_i+\sum_i\nabla_{q_i}P^\top v_i\\ &=-\kappa\,\mathrm{tr}(V^\top L_AV)\\ &=-\frac{\kappa}{2N}\sum_{i,j}a_{ij}\|v_i-v_j\|^2\le0. \end{aligned}$
 
 Это **авторский вывод для конкретной системы**, согласованный с формализмом парных взаимодействий [5, PDF с. 4–7] и диссипативной структурой [8, PDF с. 3–5]. Он верен при $A=A^\top\ge0$, $\kappa\ge0$, симметричном корректном $P$ без явной зависимости от времени и точной непрерывной эволюции.
 
 ### Интегрирование накопленной диссипации
 
-$$
-\dot W=\kappa\,\operatorname{tr}(V^\top L_AV),\qquad W(0)=0,
-$$
+$\displaystyle \dot W=\kappa\,\mathrm{tr}(V^\top L_AV),\qquad W(0)=0,$
 
-$$
-\boxed{\mathcal R(t)=H(t)+W(t)-H(0)\approx0}.
-$$
+$\displaystyle \boxed{\mathcal R(t)=H(t)+W(t)-H(0)\approx0}.$
 
 $W$ интегрируется как дополнительная скалярная компонента состояния ODE. Это уже реализовано в `e02_dynamics.py` (М4). Значение $\mathcal R$ измеряет **численную невязку**, а не физический закон для реальной молекулы.
 
 ### Центр масс и относительные координаты
 
-$$
-\bar v=\frac1N\sum_iv_i,\quad\bar q=\frac1N\sum_iq_i,
-\qquad
-\bar v(t)=\bar v(0),\quad
-\bar q(t)=\bar q(0)+t\bar v(0).
-$$
+$\displaystyle \bar v=\frac1N\sum_iv_i,\quad\bar q=\frac1N\sum_iq_i, \qquad \bar v(t)=\bar v(0),\quad \bar q(t)=\bar q(0)+t\bar v(0).$
 
 Это следует из взаимной компенсации симметричных внутренних сил и членов согласования. Поэтому **абсолютные координаты** могут уходить на бесконечность при ненулевой средней скорости; изучаем:
 
-$$
-R_{\mathrm{RMS}}=\sqrt{\frac1N\sum_i\|q_i-\bar q\|^2},\quad
-R_{\max}=\max_i\|q_i-\bar q\|.
-$$
+$\displaystyle R_{\mathrm{RMS}}=\sqrt{\frac1N\sum_i\|q_i-\bar q\|^2},\quad R_{\max}=\max_i\|q_i-\bar q\|.$
 
 В старом E02 функция `relative_radius()` возвращает именно $R_{\mathrm{RMS}}$ (М4).
 
@@ -270,31 +191,17 @@ $$
 
 ### Harmonic potential (гармонический потенциал)
 
-$$
-u(r)=\frac{k}{2}r^2,\qquad
-P_{\mathrm{harm}}(X)=\frac{k}{2}\operatorname{tr}(X^\top L_BX),
-\qquad F=-kL_BX.
-$$
+$\displaystyle u(r)=\frac{k}{2}r^2,\qquad P_{\mathrm{harm}}(X)=\frac{k}{2}\mathrm{tr}(X^\top L_BX), \qquad F=-kL_BX.$
 
 Получаем линейную систему:
 
-$$
-\ddot X=-kL_BX-\kappa L_A\dot X.
-$$
+$\displaystyle \ddot X=-kL_BX-\kappa L_A\dot X.$
 
 В блочном виде для каждой координатной оси $\alpha$:
 
-$$
-\frac{d}{dt}
-\begin{bmatrix}q_\alpha\\v_\alpha\end{bmatrix}
-=
-M\begin{bmatrix}q_\alpha\\v_\alpha\end{bmatrix},\qquad
-M=\begin{bmatrix}0&I\\-kL_B&-\kappa L_A\end{bmatrix},
-$$
+$\displaystyle \frac{d}{dt} \begin{bmatrix}q_\alpha\\v_\alpha\end{bmatrix} = M\begin{bmatrix}q_\alpha\\v_\alpha\end{bmatrix},\qquad M=\begin{bmatrix}0&I\\-kL_B&-\kappa L_A\end{bmatrix},$
 
-$$
-\boxed{s_\alpha(t)=e^{Mt}s_\alpha(0)}.
-$$
+$\displaystyle \boxed{s_\alpha(t)=e^{Mt}s_\alpha(0)}.$
 
 **Общий собственный базис не требуется.** Если $L_A$ и $L_B$ не коммутируют, матричная экспонента всё равно остаётся аналитическим эталоном для постоянной линейной системы. Это стандартное решение линейной ODE; применение к данной системе — авторский вывод.
 
@@ -302,18 +209,11 @@ $$
 
 Если $k>0$, $B$ симметричен, неотрицателен и **связен**, то $\lambda_2(L_B)>0$ [6, печ. с. 46–47]. Введём:
 
-$$
-\widetilde X=X-\mathbf1\bar q^\top,\qquad
-H_{\mathrm{rel}}=\frac12\sum_i\|v_i-\bar v\|^2+P_{\mathrm{harm}}(X).
-$$
+$\displaystyle \widetilde X=X-\mathbf1\bar q^\top,\qquad H_{\mathrm{rel}}=\frac12\sum_i\|v_i-\bar v\|^2+P_{\mathrm{harm}}(X).$
 
 Для гармонического потенциала $P_{\mathrm{harm}}\ge\frac{k\lambda_2(L_B)}{2}\|\widetilde X\|_F^2$. Из невозрастания $H_{\mathrm{rel}}$ следует:
 
-$$
-\boxed{\|\widetilde X(t)\|_F^2\le\frac{2H_{\mathrm{rel}}(0)}{k\lambda_2(L_B)}},
-\qquad
-\boxed{R_{\mathrm{RMS}}^2(t)\le\frac{2H_{\mathrm{rel}}(0)}{Nk\lambda_2(L_B)}}.
-$$
+$\displaystyle \boxed{\|\widetilde X(t)\|_F^2\le\frac{2H_{\mathrm{rel}}(0)}{k\lambda_2(L_B)}}, \qquad \boxed{R_{\mathrm{RMS}}^2(t)\le\frac{2H_{\mathrm{rel}}(0)}{Nk\lambda_2(L_B)}}.$
 
 **Условия важнее формулы:** при несвязном $B$, $\lambda_2=0$, эта оценка не применима; при негармоническом потенциале её также нельзя механически использовать. Вывод следует из спектрального неравенства и энергетического баланса [6, печ. с. 46–47; 8, PDF с. 3–5].
 
@@ -336,11 +236,7 @@ $$
 
 Важный логический пример:
 
-$$
-R(t)=\log(1+t)\xrightarrow[t\to\infty]{}\infty,
-\qquad
-\dot R(t)=\frac1{1+t}\xrightarrow[t\to\infty]{}0.
-$$
+$\displaystyle R(t)=\log(1+t)\xrightarrow[t\to\infty]{}\infty, \qquad \dot R(t)=\frac1{1+t}\xrightarrow[t\to\infty]{}0.$
 
 Значит, **малый поздний наклон радиуса не доказывает ограниченность**. При конечном $T$ разрешено говорить только о поведении на $[0,T]$. На E02.3 предлагается сравнить несколько временных горизонтов и одновременно наблюдать $R_{\mathrm{RMS}}$, $R_{\max}$, силы, скорости и энергию.
 
@@ -350,14 +246,9 @@ $$
 
 ### Предлагаемый ограниченный векторный оператор
 
-$$
-\dot q_i=v_i,
-$$
+$\displaystyle \dot q_i=v_i,$
 
-$$
-\dot v_i=-\nabla_{q_i}P_\theta(q;h)
-+\frac1N\sum_ja_{ij,\theta}(h,q)(v_j-v_i).
-$$
+$\displaystyle \dot v_i=-\nabla_{q_i}P_\theta(q;h) +\frac1N\sum_ja_{ij,\theta}(h,q)(v_j-v_i).$
 
 $h_i$ — код конформера, $P_\theta$ — симметричный потенциальный функционал, $a_{ij,\theta}=a_{ji,\theta}\ge0$ — согласующие веса. Это проектная модель, вдохновлённая структурой [5, PDF с. 4–7; 8, PDF с. 3–5], а **не уже проверенная химическая модель**.
 
@@ -367,11 +258,7 @@ $h_i$ — код конформера, $P_\theta$ — симметричный �
 
 Для выбранной регрессионной задачи с метками $y_m$:
 
-$$
-\mathcal L_{\mathrm{MSE}}=\frac1M\sum_{m=1}^M(\widehat y_m-y_m)^2,
-\qquad
-\mathrm{MAE}=\frac1M\sum_{m=1}^M|\widehat y_m-y_m|.
-$$
+$\displaystyle \mathcal L_{\mathrm{MSE}}=\frac1M\sum_{m=1}^M(\widehat y_m-y_m)^2, \qquad \mathrm{MAE}=\frac1M\sum_{m=1}^M|\widehat y_m-y_m|.$
 
 $M$ — число молекул, **не число конформеров**. Обе величины здесь — определения метрик/функции потерь для проектного протокола, а не специальная формула отдельной работы. Сравнивать Deep Sets и рой следует при одинаковых данных и split'ах [3, PDF с. 2–3; М1, PDF с. 5].
 
@@ -379,9 +266,7 @@ $M$ — число молекул, **не число конформеров**. �
 
 При удалении части конформеров вход $\mathcal C_m$ меняется, но цель $y_m$ остаётся меткой **той же молекулы**:
 
-$$
-\Delta\mathrm{MAE}(r)=\mathrm{MAE}(r)-\mathrm{MAE}(100\%),
-$$
+$\displaystyle \Delta\mathrm{MAE}(r)=\mathrm{MAE}(r)-\mathrm{MAE}(100\%),$
 
 где $r$ — оставшаяся доля исходного набора. Для «удаления самой низкоэнергетической конформации» фиксировать маску, метод оценки энергии и все seeds (М2, §11).
 
